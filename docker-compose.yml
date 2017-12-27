@@ -9,3 +9,13 @@ services:
     ports:
     - "8080:80"
     restart: always
+    container_name: gitlab
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    volumes:
+    - ./gitlab-runner/config:/etc/gitlab-runner
+    - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    container_name: gitlab_runner
+    depends_on:
+      - gitlab
