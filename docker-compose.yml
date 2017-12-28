@@ -8,6 +8,7 @@ services:
     - ./gitlab/data:/var/opt/gitlab
     ports:
     - "8080:80"
+    - "2222:22"
     restart: always
     container_name: gitlab
   gitlab-runner:
@@ -18,4 +19,4 @@ services:
     restart: always
     container_name: gitlab_runner
     depends_on:
-      - gitlab
+    - gitlab
