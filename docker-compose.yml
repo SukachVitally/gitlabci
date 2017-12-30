@@ -1,16 +1,5 @@
 version: '3'
 services:
-  gitlab:
-    image: gitlab/gitlab-ce:latest
-    volumes:
-    - ./gitlab/config:/etc/gitlab
-    - ./gitlab/logs:/var/log/gitlab
-    - ./gitlab/data:/var/opt/gitlab
-    ports:
-    - "8080:80"
-    - "2222:22"
-    restart: always
-    container_name: gitlab
   gitlab-runner:
     image: gitlab/gitlab-runner:latest
     volumes:
@@ -18,5 +7,3 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     container_name: gitlab_runner
-    depends_on:
-    - gitlab
